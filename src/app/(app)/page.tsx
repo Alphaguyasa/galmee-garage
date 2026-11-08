@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Plus, Search } from "lucide-react";
+import { loadDemoDataAction } from "@/actions/garage";
+import { ActionForm } from "@/components/garage/action-form";
 import { JobRow } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
 import { buttonVariants } from "@/components/ui/button";
@@ -8,14 +10,22 @@ import { Label } from "@/components/ui/label";
 import { plateKey } from "@/lib/plate";
 import { cn } from "@/lib/utils";
 import { listOpenJobs, searchVehicles } from "@/server/dal/garage";
+import { getSession } from "@/server/dal/session";
 import { plateParam } from "@/server/validation";
+
+const DEMO_TENANT = "Galmee Garage Demo";
 
 export default async function PlatePage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q } = await searchParams;
   const parsed = plateParam.safeParse(q ?? "");
   const query = parsed.success ? parsed.data : "";
   const hasQuery = plateKey(query).length >= 2;
-  const [t, vehicles, jobs] = await Promise.all([getTranslations("jobs"), hasQuery ? searchVehicles(query) : Promise.resolve([]), listOpenJobs()]);
+  const [t, vehicles, jobs, { tenant }] = await Promise.all([
+    getTranslations("jobs"),
+    hasQuery ? searchVehicles(query) : Promise.resolve([]),
+    listOpenJobs(),
+    getSession(),
+  ]);
 
   return (
     <div className="grid gap-6">
@@ -78,6 +88,13 @@ export default async function PlatePage({ searchParams }: { searchParams: Promis
           </ul>
         )}
       </section>
+
+      {jobs.length === 0 && tenant.name === DEMO_TENANT ? (
+        <section className="grid gap-2 rounded-md border bg-card p-4">
+          <p>{t("emptyDemo")}</p>
+          <ActionForm action={loadDemoDataAction} submitLabel={t("loadDemo")} variant="outline" />
+        </section>
+      ) : null}
 
       <div className="sticky bottom-20 md:bottom-4">
         <Link href="/jobs/new" className={cn(buttonVariants({ size: "lg" }), "h-12 w-full shadow-md")}>

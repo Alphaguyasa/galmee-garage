@@ -300,3 +300,11 @@ export async function receiveStock(input: { item: string; qty: number; cost: num
   const { error } = await supabase.rpc("receive_stock", { p_item: input.item, p_qty: input.qty, p_cost: input.cost });
   return error ? failure(error.message) : { ok: true, data: undefined };
 }
+
+/** Only the empty demo tenant can load the seed; the database checks owner and name. */
+export async function loadDemoData(): Promise<Result<number>> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("gr_load_demo_data");
+  if (error) return failure(error.message);
+  return { ok: true, data };
+}

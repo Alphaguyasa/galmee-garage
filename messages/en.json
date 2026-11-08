@@ -84,7 +84,9 @@
     "job_has_lines": "Remove the parts and labour before cancelling.",
     "balance_due": "Money is still owed. An owner or manager can give credit.",
     "mechanic_exists": "A mechanic with that name already exists.",
-    "sku_taken": "That code is already used."
+    "sku_taken": "That code is already used.",
+    "not_demo_tenant": "Only the demo garage can load this.",
+    "already_loaded": "Already loaded."
   },
   "status": {
     "open": "Waiting",
@@ -109,7 +111,9 @@
     "owes": "owes {amount}",
     "noMechanic": "No mechanic yet",
     "noOwner": "No owner saved",
-    "paidUp": "Paid"
+    "paidUp": "Paid",
+    "loadDemo": "Load demo data",
+    "emptyDemo": "This demo garage is empty. Load the sample cars, parts and job cards."
   },
   "newJob": {
     "title": "New job",

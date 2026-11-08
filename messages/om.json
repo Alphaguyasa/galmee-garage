@@ -84,7 +84,9 @@
     "job_has_lines": "Dura meeshaa fi gatii hojii balleessi.",
     "balance_due": "Maallaqni hafeera. Abbaa ykn hogganaa qofatu liqii kennuu danda'a.",
     "mechanic_exists": "Makaanikiin maqaa kanaan jira.",
-    "sku_taken": "Koodiin kun qabameera."
+    "sku_taken": "Koodiin kun qabameera.",
+    "not_demo_tenant": "Gaaraajii agarsiisaa qofatu fe'uu danda'a.",
+    "already_loaded": "Duraan fe'ameera."
   },
   "status": {
     "open": "Eegaa jira",
@@ -109,7 +111,9 @@
     "owes": "{amount} idaa",
     "noMechanic": "Makaanikiin hin ramadamne",
     "noOwner": "Abbaan hin galmoofne",
-    "paidUp": "Kaffalameera"
+    "paidUp": "Kaffalameera",
+    "loadDemo": "Odeeffannoo agarsiisaa fe'i",
+    "emptyDemo": "Gaaraajiin agarsiisaa kun duwwaa dha. Fakkeenya konkolaataa, meeshaa fi hojii fe'i."
   },
   "newJob": {
     "title": "Hojii haaraa",

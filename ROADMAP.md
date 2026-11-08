@@ -42,7 +42,7 @@
 
 ## M4: Demo ready
 
-- [ ] Demo tenant "Galmee Garage Demo" with data: 40 vehicles with Ethiopian plate formats, 80 parts, 2 months of job cards
+- [ ] Demo tenant "Galmee Garage Demo" (seed function `gr_load_demo_data` ready and tested; the tenant itself is created with the demo login) with data: 40 vehicles with Ethiopian plate formats, 80 parts, 2 months of job cards
 - [ ] Demo login documented in the decision log for Alpha (password set by Alpha, never committed)
 - [ ] 5-minute demo path works on a phone in airplane mode for the main action
 - [ ] Amharic and Afaan Oromo text reviewed list in the decision log for Alpha (native speaker)

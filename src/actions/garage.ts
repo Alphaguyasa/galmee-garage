@@ -154,3 +154,12 @@ export async function receiveStockAction(_prev: ActionState, formData: FormData)
   revalidatePath("/parts");
   return { done: true };
 }
+
+export async function loadDemoDataAction(): Promise<ActionState> {
+  await requireLogin();
+  const result = await garage.loadDemoData();
+  if (!result.ok) return { error: result.error };
+  revalidatePath("/");
+  revalidatePath("/parts");
+  return { done: true };
+}
