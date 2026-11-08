@@ -10,23 +10,23 @@
 - [x] Ethiopian calendar date display helper + tests
 - [x] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
 - [ ] Staff management (owner only): invite staff, set role
-- [ ] Generated Supabase TypeScript types committed
+- [x] Generated Supabase TypeScript types committed
 
 ## M1: Core screens
 
 - [ ] Customers: list, search by name/phone, detail with balance
-- [ ] Items and stock (if this product uses stock): list, add, receive stock
-- [ ] Payments and credit: record payment, credit statement
+- [x] Items and stock (if this product uses stock): list, add, receive stock
+- [ ] Payments and credit: record payment, credit statement (job payments and debt posting done; customer statement screen still to do)
 - [ ] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Garage features
 
-- [ ] Job card (vehicle, plate, complaint, mechanic, parts, labour)
-- [ ] Vehicle history by plate
-- [ ] Parts stock and sales
-- [ ] Mechanic work list
-- [ ] Unpaid jobs
+- [x] Job card (vehicle, plate, complaint, mechanic, parts, labour)
+- [x] Vehicle history by plate
+- [x] Parts stock and sales
+- [x] Mechanic work list
+- [x] Unpaid jobs
 - [x] Migration: gr_vehicles
 - [x] Migration: gr_mechanics
 - [x] Migration: gr_job_cards
@@ -37,7 +37,7 @@
 
 ## M3: Notifications
 
-- [ ] SMS to customer when the car is ready, with amount due
+- [x] SMS to customer when the car is ready, with amount due
 - [ ] Edge Function reads `notifications` queue and sends (needs AfroMessage/Telegram keys: ask in the decision log)
 
 ## M4: Demo ready

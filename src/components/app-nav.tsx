@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Search } from "lucide-react";
+import { Search, Settings, ShoppingCart, Wallet, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const ITEMS = [{ href: "/", key: "home", icon: Search, manager: false }] as const;
+const ITEMS = [
+  { href: "/", key: "home", icon: Search, manager: false },
+  { href: "/work", key: "work", icon: Wrench, manager: false },
+  { href: "/parts", key: "parts", icon: ShoppingCart, manager: false },
+  { href: "/unpaid", key: "unpaid", icon: Wallet, manager: false },
+  { href: "/settings", key: "settings", icon: Settings, manager: true },
+] as const;
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);

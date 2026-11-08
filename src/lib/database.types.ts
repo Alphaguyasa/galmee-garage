@@ -15,6 +15,339 @@ export type Database = {
   }
   public: {
     Tables: {
+      gr_vehicles: {
+        Row: {
+          id: string
+          tenant_id: string
+          plate: string
+          plate_key: string
+          customer_id: string | null
+          make: string | null
+          model: string | null
+          year: number | null
+          color: string | null
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          plate: string
+          plate_key?: never
+          customer_id?: string | null
+          make?: string | null
+          model?: string | null
+          year?: number | null
+          color?: string | null
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          plate?: string
+          plate_key?: never
+          customer_id?: string | null
+          make?: string | null
+          model?: string | null
+          year?: number | null
+          color?: string | null
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_vehicles_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gr_mechanics: {
+        Row: {
+          id: string
+          tenant_id: string
+          name: string
+          phone: string | null
+          active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          name: string
+          phone?: string | null
+          active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          name?: string
+          phone?: string | null
+          active?: boolean
+          created_at?: string
+        }
+        Relationships: [
+        ]
+      }
+      gr_job_cards: {
+        Row: {
+          id: string
+          tenant_id: string
+          job_no: number
+          vehicle_id: string
+          customer_id: string
+          mechanic_id: string | null
+          complaint: string
+          work_done: string | null
+          odometer_km: number | null
+          status: string
+          parts_total: number
+          labour_total: number
+          paid_total: number
+          total: number
+          balance: number
+          debt_posted: number
+          client_ref: string | null
+          created_by: string | null
+          opened_at: string
+          ready_at: string | null
+          delivered_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          job_no: number
+          vehicle_id: string
+          customer_id: string
+          mechanic_id?: string | null
+          complaint: string
+          work_done?: string | null
+          odometer_km?: number | null
+          status?: string
+          parts_total?: number
+          labour_total?: number
+          paid_total?: number
+          total?: never
+          balance?: never
+          debt_posted?: number
+          client_ref?: string | null
+          created_by?: string | null
+          opened_at?: string
+          ready_at?: string | null
+          delivered_at?: string | null
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          job_no?: number
+          vehicle_id?: string
+          customer_id?: string
+          mechanic_id?: string | null
+          complaint?: string
+          work_done?: string | null
+          odometer_km?: number | null
+          status?: string
+          parts_total?: number
+          labour_total?: number
+          paid_total?: number
+          total?: never
+          balance?: never
+          debt_posted?: number
+          client_ref?: string | null
+          created_by?: string | null
+          opened_at?: string
+          ready_at?: string | null
+          delivered_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_job_cards_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "gr_job_cards_tenant_id_vehicle_id_fkey"
+            columns: ["tenant_id", "vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "gr_vehicles"
+            referencedColumns: ["tenant_id", "id"]
+          },
+          {
+            foreignKeyName: "gr_job_cards_tenant_id_mechanic_id_fkey"
+            columns: ["tenant_id", "mechanic_id"]
+            isOneToOne: false
+            referencedRelation: "gr_mechanics"
+            referencedColumns: ["tenant_id", "id"]
+          },
+        ]
+      }
+      gr_job_parts: {
+        Row: {
+          id: string
+          tenant_id: string
+          job_id: string
+          item_id: string
+          qty: number
+          unit_price: number
+          line_total: number
+          client_ref: string | null
+          created_by: string | null
+          created_at: string
+          reversed_at: string | null
+          reversed_by: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          job_id: string
+          item_id: string
+          qty: number
+          unit_price: number
+          line_total?: never
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+          reversed_at?: string | null
+          reversed_by?: string | null
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          job_id?: string
+          item_id?: string
+          qty?: number
+          unit_price?: number
+          line_total?: never
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+          reversed_at?: string | null
+          reversed_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_job_parts_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "gr_job_parts_tenant_id_job_id_fkey"
+            columns: ["tenant_id", "job_id"]
+            isOneToOne: false
+            referencedRelation: "gr_job_cards"
+            referencedColumns: ["tenant_id", "id"]
+          },
+        ]
+      }
+      gr_job_labour: {
+        Row: {
+          id: string
+          tenant_id: string
+          job_id: string
+          mechanic_id: string | null
+          description: string
+          amount: number
+          client_ref: string | null
+          created_by: string | null
+          created_at: string
+          reversed_at: string | null
+          reversed_by: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          job_id: string
+          mechanic_id?: string | null
+          description: string
+          amount: number
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+          reversed_at?: string | null
+          reversed_by?: string | null
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          job_id?: string
+          mechanic_id?: string | null
+          description?: string
+          amount?: number
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+          reversed_at?: string | null
+          reversed_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_job_labour_tenant_id_job_id_fkey"
+            columns: ["tenant_id", "job_id"]
+            isOneToOne: false
+            referencedRelation: "gr_job_cards"
+            referencedColumns: ["tenant_id", "id"]
+          },
+          {
+            foreignKeyName: "gr_job_labour_tenant_id_mechanic_id_fkey"
+            columns: ["tenant_id", "mechanic_id"]
+            isOneToOne: false
+            referencedRelation: "gr_mechanics"
+            referencedColumns: ["tenant_id", "id"]
+          },
+        ]
+      }
+      gr_job_payments: {
+        Row: {
+          id: string
+          tenant_id: string
+          job_id: string
+          payment_id: string
+          amount: number
+          method: Database["public"]["Enums"]["pay_method"]
+          client_ref: string | null
+          created_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          tenant_id?: string
+          job_id: string
+          payment_id: string
+          amount: number
+          method: Database["public"]["Enums"]["pay_method"]
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          tenant_id?: string
+          job_id?: string
+          payment_id?: string
+          amount?: number
+          method?: Database["public"]["Enums"]["pay_method"]
+          client_ref?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_job_payments_tenant_id_job_id_fkey"
+            columns: ["tenant_id", "job_id"]
+            isOneToOne: false
+            referencedRelation: "gr_job_cards"
+            referencedColumns: ["tenant_id", "id"]
+          },
+        ]
+      }
       audit_log: {
         Row: {
           action: string
@@ -812,6 +1145,29 @@ export type Database = {
       }
     }
     Functions: {
+      gr_add_labour: {
+        Args: { p_amount: number; p_client_ref?: string; p_description: string; p_job: string; p_mechanic?: string }
+        Returns: string
+      }
+      gr_add_part: {
+        Args: { p_client_ref?: string; p_item: string; p_job: string; p_qty: number; p_unit_price?: number }
+        Returns: string
+      }
+      gr_open_job: {
+        Args: { p_client_ref?: string; p_complaint: string; p_customer?: string; p_customer_name?: string; p_customer_phone?: string; p_make?: string; p_mechanic?: string; p_model?: string; p_odometer?: number; p_plate: string }
+        Returns: string
+      }
+      gr_pay_job: {
+        Args: { p_amount: number; p_client_ref?: string; p_job: string; p_method?: Database["public"]["Enums"]["pay_method"]; p_reference?: string }
+        Returns: string
+      }
+      gr_reverse_labour: { Args: { p_labour: string }; Returns: undefined }
+      gr_reverse_part: { Args: { p_part: string }; Returns: undefined }
+      gr_set_status: { Args: { p_due?: string; p_job: string; p_status: string }; Returns: undefined }
+      gr_update_job: {
+        Args: { p_job: string; p_mechanic?: string; p_odometer?: number; p_work_done?: string }
+        Returns: undefined
+      }
       adjust_stock: {
         Args: { p_batch: string; p_new_qty: number; p_reason: string }
         Returns: undefined
