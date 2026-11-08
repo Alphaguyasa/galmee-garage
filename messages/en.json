@@ -1,0 +1,63 @@
+{
+  "app": {
+    "name": "Galmee Garage",
+    "tagline": "Type a plate number and see every repair and part ever put on that car."
+  },
+  "nav": {
+    "menu": "Main menu",
+    "home": "Plate"
+  },
+  "common": {
+    "language": "Language",
+    "offline": "You are offline",
+    "offlineBody": "Galmee will reconnect automatically.",
+    "retry": "Try again",
+    "today": "Today",
+    "skipToContent": "Skip to content"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "signupTitle": "Create your garage account",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 10 characters",
+    "login": "Log in",
+    "signup": "Create account",
+    "logout": "Log out",
+    "noAccount": "New garage?",
+    "haveAccount": "Already have an account?",
+    "checkEmail": "Check your email and open the link to confirm your account, then log in.",
+    "errorInvalid": "Wrong email or password.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorPassword": "Password must be at least 10 characters.",
+    "errorEmail": "Enter a valid email address."
+  },
+  "onboarding": {
+    "title": "Set up your garage",
+    "intro": "Name your garage to start your own job book.",
+    "fullName": "Your full name",
+    "phone": "Phone number",
+    "submit": "Start using Galmee",
+    "error": "Could not create the garage. Please try again.",
+    "errorPhone": "Enter an Ethiopian phone number, for example 0911 234 567.",
+    "errorRequired": "Fill in all three fields.",
+    "garageName": "Garage name"
+  },
+  "home": {
+    "welcome": "Welcome, {name}"
+  },
+  "roles": {
+    "owner": "Owner",
+    "manager": "Manager",
+    "staff": "Reception"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "load": "This page could not load. Check your connection and try again.",
+    "form": "Check the form and try again.",
+    "phone": "Enter an Ethiopian phone number, for example 0911 234 567.",
+    "not_allowed": "Your role cannot do this. Ask a manager.",
+    "bad_amount": "Enter a valid amount.",
+    "overpayment": "That is more than the guest owes."
+  }
+}
