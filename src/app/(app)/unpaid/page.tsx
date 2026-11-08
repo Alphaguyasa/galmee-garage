@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { JobRow } from "@/components/garage/job-row";
 import type { Locale } from "@/i18n/config";
@@ -10,7 +11,10 @@ export default async function UnpaidPage() {
   const totalOwed = jobs.reduce((sum, j) => sum + Number(j.balance), 0);
   return (
     <div className="grid gap-4">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <div className="flex items-baseline justify-between gap-3">
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
+        <Link href="/customers" className="font-medium text-primary underline underline-offset-4">{t("customers")}</Link>
+      </div>
       {jobs.length === 0 ? (
         <p className="text-muted-foreground">{t("empty")}</p>
       ) : (

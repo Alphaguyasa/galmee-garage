@@ -198,7 +198,8 @@
     "title": "Unpaid jobs",
     "totalOwed": "Total owed",
     "empty": "Nobody owes money right now.",
-    "owes": "owes {amount}"
+    "owes": "owes {amount}",
+    "customers": "Customers"
   },
   "partsPage": {
     "title": "Parts",
@@ -236,5 +237,22 @@
     "deactivate": "Remove",
     "activate": "Bring back",
     "inactive": "Not working here"
+  },
+  "customers": {
+    "title": "Customers",
+    "search": "Search by name or phone",
+    "searchAction": "Search",
+    "empty": "No customers yet. They appear when you open a job.",
+    "noMatch": "No customer matches that search.",
+    "owes": "owes {amount}",
+    "clear": "Nothing owed",
+    "vehicles": "Vehicles",
+    "noVehicles": "No vehicles saved.",
+    "unpaidJobs": "Unpaid jobs",
+    "statement": "Credit statement",
+    "noStatement": "No credit history.",
+    "debt": "Debt",
+    "repayment": "Repayment",
+    "due": "due {date}"
   }
 }

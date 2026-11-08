@@ -198,7 +198,8 @@
     "title": "Hojiiwwan hin kaffalamne",
     "totalOwed": "Idaa waliigalaa",
     "empty": "Yeroo ammaa namni idaa hin qabu.",
-    "owes": "{amount} idaa"
+    "owes": "{amount} idaa",
+    "customers": "Maamiltoota"
   },
   "partsPage": {
     "title": "Meeshaalee",
@@ -236,5 +237,22 @@
     "deactivate": "Balleessi",
     "activate": "Deebisi",
     "inactive": "Asitti hin hojjetu"
+  },
+  "customers": {
+    "title": "Maamiltoota",
+    "search": "Maqaa ykn bilbilaan barbaadi",
+    "searchAction": "Barbaadi",
+    "empty": "Maamilli hin jiru. Yeroo hojii banamu galmaa'u.",
+    "noMatch": "Maamilli wal fakkaatu hin jiru.",
+    "owes": "{amount} idaa",
+    "clear": "Idaa hin qabu",
+    "vehicles": "Konkolaattota",
+    "noVehicles": "Konkolaataan hin galmoofne.",
+    "unpaidJobs": "Hojiiwwan hin kaffalamne",
+    "statement": "Ibsa liqii",
+    "noStatement": "Seenaan liqii hin jiru.",
+    "debt": "Idaa",
+    "repayment": "Kaffaltii",
+    "due": "Guyyaa {date}"
   }
 }

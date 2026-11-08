@@ -308,3 +308,41 @@ export async function loadDemoData(): Promise<Result<number>> {
   if (error) return failure(error.message);
   return { ok: true, data };
 }
+
+export type CustomerRow = { id: string; name: string; phone: string | null; balance: number };
+
+export async function listCustomers(search?: string): Promise<CustomerRow[]> {
+  const supabase = await createClient();
+  let q = supabase.from("customer_balances").select("customer_id, name, phone, balance").order("name").limit(200);
+  const term = search?.replace(/[%,()]/g, " ").trim();
+  if (term) q = q.or(`name.ilike.%${term}%,phone.ilike.%${term}%`);
+  const { data, error } = await q;
+  if (error) throw error;
+  return data.flatMap((c) => (c.customer_id ? [{ id: c.customer_id, name: c.name ?? "", phone: c.phone, balance: c.balance ?? 0 }] : []));
+}
+
+export type CustomerDetail = {
+  customer: CustomerRow;
+  vehicles: VehicleRef[];
+  unpaidJobs: JobDTO[];
+  ledger: { id: string; type: string; amount: number; dueDate: string | null; createdAt: string }[];
+};
+
+export async function getCustomerDetail(id: string): Promise<CustomerDetail | null> {
+  const supabase = await createClient();
+  const [customer, balance, vehicles, jobs, ledger] = await Promise.all([
+    supabase.from("customers").select("id, name, phone").eq("id", id).maybeSingle(),
+    supabase.from("customer_balances").select("balance").eq("customer_id", id).maybeSingle(),
+    supabase.from("gr_vehicles").select("id, plate, make, model").eq("customer_id", id).order("plate"),
+    supabase.from("gr_job_cards").select(JOB_COLUMNS).eq("customer_id", id).gt("balance", 0).neq("status", "cancelled").order("opened_at"),
+    supabase.from("credit_ledger").select("id, type, amount, due_date, created_at").eq("customer_id", id).order("created_at", { ascending: false }).limit(100),
+  ]);
+  for (const r of [customer, balance, vehicles, jobs, ledger]) if (r.error) throw r.error;
+  if (!customer.data) return null;
+  return {
+    customer: { id: customer.data.id, name: customer.data.name, phone: customer.data.phone, balance: balance.data?.balance ?? 0 },
+    vehicles: vehicles.data ?? [],
+    unpaidJobs: ((jobs.data ?? []) as unknown as JobRow[]).map(toJob),
+    ledger: (ledger.data ?? []).map((l) => ({ id: l.id, type: l.type, amount: l.amount, dueDate: l.due_date, createdAt: l.created_at })),
+  };
+}

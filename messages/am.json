@@ -198,7 +198,8 @@
     "title": "ያልተከፈሉ ሥራዎች",
     "totalOwed": "ጠቅላላ ዕዳ",
     "empty": "አሁን የሚከፍል የለም።",
-    "owes": "{amount} ዕዳ"
+    "owes": "{amount} ዕዳ",
+    "customers": "ደንበኞች"
   },
   "partsPage": {
     "title": "ዕቃዎች",
@@ -236,5 +237,22 @@
     "deactivate": "አስወግድ",
     "activate": "መልስ",
     "inactive": "እዚህ አይሠራም"
+  },
+  "customers": {
+    "title": "ደንበኞች",
+    "search": "በስም ወይም በስልክ ፈልግ",
+    "searchAction": "ፈልግ",
+    "empty": "ደንበኛ ገና የለም። ሥራ ሲከፈት ይመዘገባሉ።",
+    "noMatch": "የሚመጣጠን ደንበኛ የለም።",
+    "owes": "{amount} ዕዳ",
+    "clear": "ዕዳ የለም",
+    "vehicles": "መኪኖች",
+    "noVehicles": "መኪና አልተመዘገበም።",
+    "unpaidJobs": "ያልተከፈሉ ሥራዎች",
+    "statement": "የዱቤ መግለጫ",
+    "noStatement": "የዱቤ ታሪክ የለም።",
+    "debt": "ዕዳ",
+    "repayment": "ክፍያ",
+    "due": "የሚከፈልበት {date}"
   }
 }

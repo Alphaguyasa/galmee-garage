@@ -75,7 +75,9 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
           {vehicleName ? ` · ${vehicleName}` : ""}
         </p>
         <p>
-          {job.customer.name}
+          <Link href={`/customers/${job.customer.id}`} className="underline underline-offset-4">
+            {job.customer.name}
+          </Link>
           {job.customer.phone ? (
             <>
               {" · "}
