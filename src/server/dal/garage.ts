@@ -362,3 +362,13 @@ export async function dailyReport(from: string, to: string): Promise<ReportDayDT
     collected: Number(d.collected),
   }));
 }
+
+export type MechanicLabourDTO = { mechanicId: string | null; name: string | null; jobs: number; labour: number };
+
+/** Labour booked per mechanic in the range, biggest first; lines with no mechanic come back with a null name. */
+export async function labourByMechanic(from: string, to: string): Promise<MechanicLabourDTO[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("gr_labour_by_mechanic", { p_from: from, p_to: to });
+  if (error) throw new Error("report_unavailable");
+  return (data ?? []).map((m) => ({ mechanicId: m.mechanic_id, name: m.mechanic_name, jobs: m.jobs, labour: Number(m.labour) }));
+}

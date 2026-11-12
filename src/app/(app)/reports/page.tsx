@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Download } from "lucide-react";
 import { DataList } from "@/components/galmee/data-list";
+import { ListRow, ListSheet } from "@/components/galmee/list-row";
 import { MoneySummaryCard } from "@/components/galmee/money-summary-card";
 import { buttonVariants } from "@/components/ui/button";
 import type { Locale } from "@/i18n/config";
@@ -10,7 +11,7 @@ import { formatEthiopianDate } from "@/lib/ethiopian-date";
 import { formatBirr } from "@/lib/money";
 import { REPORT_RANGES, addisToday, parseReportRange, reportRangeDates, type ReportRange } from "@/lib/report-range";
 import { cn } from "@/lib/utils";
-import { dailyReport } from "@/server/dal/garage";
+import { dailyReport, labourByMechanic } from "@/server/dal/garage";
 import { getSession } from "@/server/dal/session";
 
 export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ range?: string }> }) {
@@ -18,7 +19,12 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
   const { profile } = await getSession();
   if (profile.role === "staff") redirect("/");
   const { from, to } = reportRangeDates(range, addisToday());
-  const [days, t, locale] = await Promise.all([dailyReport(from, to), getTranslations("reports"), getLocale() as Promise<Locale>]);
+  const [days, mechanics, t, locale] = await Promise.all([
+    dailyReport(from, to),
+    labourByMechanic(from, to),
+    getTranslations("reports"),
+    getLocale() as Promise<Locale>,
+  ]);
   const rows = [...days].reverse();
   const parts = days.reduce((sum, d) => sum + d.parts, 0);
   const labour = days.reduce((sum, d) => sum + d.labour, 0);
@@ -58,6 +64,21 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
         />
       </div>
       {work > 0 ? <p className="text-sm">{t("labourShare", { pct: Math.round((labour / work) * 100) })}</p> : null}
+      {mechanics.length > 0 ? (
+        <section className="grid gap-2">
+          <h2 className="text-lg font-semibold">{t("byMechanic")}</h2>
+          <ListSheet>
+            {mechanics.map((m) => (
+              <ListRow
+                key={m.mechanicId ?? "none"}
+                title={m.name ?? t("noMechanic")}
+                sub={t("mechanicJobs", { count: m.jobs })}
+                right={<span className="num font-semibold">{formatBirr(m.labour, locale)}</span>}
+              />
+            ))}
+          </ListSheet>
+        </section>
+      ) : null}
       <DataList
         caption={t("title")}
         rows={rows}

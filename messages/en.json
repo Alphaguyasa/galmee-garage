@@ -284,6 +284,9 @@
     "today": "Today",
     "thisWeek": "This week",
     "thisMonth": "This month",
-    "period": "{from} to {to}"
+    "period": "{from} to {to}",
+    "byMechanic": "Labour by mechanic",
+    "noMechanic": "No mechanic named",
+    "mechanicJobs": "{count, plural, one {# job} other {# jobs}}"
   }
 }

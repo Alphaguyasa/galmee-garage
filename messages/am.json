@@ -284,6 +284,9 @@
     "today": "ዛሬ",
     "thisWeek": "ይህ ሳምንት",
     "thisMonth": "ይህ ወር",
-    "period": "ከ{from} እስከ {to}"
+    "period": "ከ{from} እስከ {to}",
+    "byMechanic": "የእጅ ዋጋ በመካኒክ",
+    "noMechanic": "መካኒክ ያልተመደበለት",
+    "mechanicJobs": "{count} ሥራ"
   }
 }

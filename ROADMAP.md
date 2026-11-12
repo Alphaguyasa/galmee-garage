@@ -14,7 +14,8 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [ ] Offline queue for job payments
 - [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
 - [x] Reorder-level low-stock list
-- [ ] Staff invite and per-mechanic labour report
+- [ ] Staff invite
+- [x] Per-mechanic labour report
 - [ ] Service-due reminders (by km or months) queued as SMS
 - [ ] Export all tenant data to Excel
 

@@ -284,6 +284,9 @@
     "today": "Har'a",
     "thisWeek": "Torban kana",
     "thisMonth": "Ji'a kana",
-    "period": "{from} hanga {to}"
+    "period": "{from} hanga {to}",
+    "byMechanic": "Hojii harkaa makaanikaan",
+    "noMechanic": "Makaanikii hin ramadamne",
+    "mechanicJobs": "Hojii {count}"
   }
 }
