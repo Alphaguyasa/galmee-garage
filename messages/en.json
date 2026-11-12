@@ -260,5 +260,25 @@
     "debt": "Debt",
     "repayment": "Repayment",
     "due": "due {date}"
+  },
+  "reports": {
+    "title": "Reports",
+    "link": "Reports: labour, parts and money in",
+    "work": "Work handed over",
+    "workSub": "Labour {labour} · Parts {parts}",
+    "collected": "Money collected",
+    "date": "Date",
+    "jobs": "Cars",
+    "parts": "Parts",
+    "labour": "Labour",
+    "collectedColumn": "Collected",
+    "labourShare": "Labour is {pct}% of the work handed over",
+    "range": "Date range",
+    "lastDays": "{days} days",
+    "export": "Download CSV",
+    "today": "Today",
+    "thisWeek": "This week",
+    "thisMonth": "This month",
+    "period": "{from} to {to}"
   }
 }

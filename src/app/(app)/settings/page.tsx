@@ -1,7 +1,10 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
+import { BarChart3 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { addMechanicAction, setMechanicActiveAction } from "@/actions/garage";
 import { ActionForm } from "@/components/garage/action-form";
+import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { listMechanics } from "@/server/dal/garage";
@@ -10,11 +13,15 @@ import { getSession } from "@/server/dal/session";
 export default async function SettingsPage() {
   const { profile } = await getSession();
   if (profile.role === "staff") redirect("/");
-  const [t, mechanics] = await Promise.all([getTranslations("settings"), listMechanics(false)]);
+  const [t, tReports, mechanics] = await Promise.all([getTranslations("settings"), getTranslations("reports"), listMechanics(false)]);
 
   return (
     <div className="grid max-w-md gap-5">
       <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
+      <Link href="/reports" className={`${buttonVariants({ variant: "outline", size: "lg" })} h-auto min-h-12 justify-start bg-card py-3 text-left whitespace-normal`}>
+        <BarChart3 aria-hidden />
+        {tReports("link")}
+      </Link>
       <section className="grid gap-2">
         <h2 className="text-lg font-semibold">{t("mechanics")}</h2>
         {mechanics.length === 0 ? (

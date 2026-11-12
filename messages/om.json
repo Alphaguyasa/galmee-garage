@@ -260,5 +260,25 @@
     "debt": "Idaa",
     "repayment": "Kaffaltii",
     "due": "Guyyaa {date}"
+  },
+  "reports": {
+    "title": "Gabaasa",
+    "link": "Gabaasa: hojii harkaa, meeshaa fi maallaqa gale",
+    "work": "Hojii kenname",
+    "workSub": "Hojii harkaa {labour} · Meeshaa {parts}",
+    "collected": "Maallaqa gale",
+    "date": "Guyyaa",
+    "jobs": "Konkolaattota",
+    "parts": "Meeshaa",
+    "labour": "Hojii harkaa",
+    "collectedColumn": "Gale",
+    "labourShare": "Hojii kenname keessaa {pct}% hojii harkaati",
+    "range": "Daangaa guyyaa",
+    "lastDays": "Guyyaa {days}",
+    "export": "CSV buufadhu",
+    "today": "Har'a",
+    "thisWeek": "Torban kana",
+    "thisMonth": "Ji'a kana",
+    "period": "{from} hanga {to}"
   }
 }

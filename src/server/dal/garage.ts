@@ -346,3 +346,19 @@ export async function getCustomerDetail(id: string): Promise<CustomerDetail | nu
     ledger: (ledger.data ?? []).map((l) => ({ id: l.id, type: l.type, amount: l.amount, dueDate: l.due_date, createdAt: l.created_at })),
   };
 }
+
+export type ReportDayDTO = { day: string; jobsDelivered: number; parts: number; labour: number; collected: number };
+
+/** Per Addis Ababa day: jobs handed over, their parts and labour value, and money collected. */
+export async function dailyReport(from: string, to: string): Promise<ReportDayDTO[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("gr_daily_report", { p_from: from, p_to: to });
+  if (error) throw new Error("report_unavailable");
+  return (data ?? []).map((d) => ({
+    day: d.day,
+    jobsDelivered: d.jobs_delivered,
+    parts: Number(d.parts),
+    labour: Number(d.labour),
+    collected: Number(d.collected),
+  }));
+}

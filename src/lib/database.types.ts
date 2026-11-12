@@ -1153,6 +1153,10 @@ export type Database = {
         Args: { p_client_ref?: string; p_item: string; p_job: string; p_qty: number; p_unit_price?: number }
         Returns: string
       }
+      gr_daily_report: {
+        Args: { p_from: string; p_to: string }
+        Returns: { collected: number; day: string; jobs_delivered: number; labour: number; parts: number }[]
+      }
       gr_load_demo_data: { Args: never; Returns: number }
       gr_open_job: {
         Args: { p_client_ref?: string; p_complaint: string; p_customer?: string; p_customer_name?: string; p_customer_phone?: string; p_make?: string; p_mechanic?: string; p_model?: string; p_odometer?: number; p_plate: string }

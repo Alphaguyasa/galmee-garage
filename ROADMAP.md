@@ -10,7 +10,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 
 ## M-after: Tier 2 and 3
 
-- [ ] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
+- [x] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
 - [ ] Offline queue for job payments
 - [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
 - [ ] Reorder-level low-stock list
@@ -37,7 +37,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 - [x] Customers: list, search by name/phone, detail with balance
 - [x] Items and stock (if this product uses stock): list, add, receive stock
 - [x] Payments and credit: record payment, credit statement
-- [ ] Reports: today / this week / this Ethiopian month; export CSV
+- [x] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Garage features

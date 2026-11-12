@@ -260,5 +260,25 @@
     "debt": "ዕዳ",
     "repayment": "ክፍያ",
     "due": "የሚከፈልበት {date}"
+  },
+  "reports": {
+    "title": "ሪፖርቶች",
+    "link": "ሪፖርቶች፦ የእጅ ዋጋ፣ ዕቃ እና የገባ ገንዘብ",
+    "work": "የተረከቡ ሥራዎች",
+    "workSub": "የእጅ ዋጋ {labour} · ዕቃ {parts}",
+    "collected": "የገባ ገንዘብ",
+    "date": "ቀን",
+    "jobs": "መኪኖች",
+    "parts": "ዕቃ",
+    "labour": "የእጅ ዋጋ",
+    "collectedColumn": "የገባ",
+    "labourShare": "ከተረከቡ ሥራዎች {pct}% የእጅ ዋጋ ነው",
+    "range": "የቀን ክልል",
+    "lastDays": "{days} ቀናት",
+    "export": "CSV አውርድ",
+    "today": "ዛሬ",
+    "thisWeek": "ይህ ሳምንት",
+    "thisMonth": "ይህ ወር",
+    "period": "ከ{from} እስከ {to}"
   }
 }
