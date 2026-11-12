@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { randomUUID } from "node:crypto";
 import { notFound } from "next/navigation";
+import { Printer } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import {
   addLabourAction,
@@ -15,6 +16,7 @@ import { ActionForm } from "@/components/garage/action-form";
 import { DateField, SelectField } from "@/components/garage/fields";
 import { StatusTag } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
+import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { Locale } from "@/i18n/config";
@@ -101,6 +103,11 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
         <span className="font-semibold">{t("balance")}</span>
         <span className={`num text-right text-lg font-bold ${job.balance > 0 ? "text-destructive" : ""}`}>{formatBirr(job.balance, locale)}</span>
       </section>
+
+      <Link href={`/jobs/${job.id}/invoice`} className={`${buttonVariants({ variant: "outline", size: "lg" })} md:max-w-sm`}>
+        <Printer aria-hidden />
+        {t("printInvoice")}
+      </Link>
 
       <section className="grid gap-2">
         <h2 className="text-lg font-semibold">{t("partsTitle")}</h2>

@@ -179,7 +179,13 @@
     "creditNote": "ገንዘብ እያለ መኪና ማስረከብ ወደ ባለቤቱ ዕዳ ይጨመራል። ይህን ባለቤት ወይም ሥራ አስኪያጅ ብቻ ይችላል።",
     "closed": "ይህ ሥራ ተዘግቷል።",
     "backToJob": "ሥራ ክፈት",
-    "history": "የዚህ መኪና ታሪክ"
+    "history": "የዚህ መኪና ታሪክ",
+    "invoiceTitle": "የሥራ ደረሰኝ ቁ. {no}",
+    "invoiceVehicle": "መኪና",
+    "invoiceOdometer": "ኪሎሜትር: {km} ኪሜ",
+    "invoiceFooter": "እናመሰግናለን። በሰላም ይንዱ።",
+    "printInvoice": "ደረሰኝ አትም",
+    "invoice": "ደረሰኝ"
   },
   "vehicle": {
     "visits": "{count, plural, =0 {ገና አልመጣም} other {# ጊዜ መጥቷል}}",

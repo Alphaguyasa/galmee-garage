@@ -158,4 +158,8 @@
     color: #000;
     background: #fff;
   }
+  /* Garage invoices print on 80 mm paper. */
+  .receipt-58.receipt-80 {
+    width: 80mm;
+  }
 }

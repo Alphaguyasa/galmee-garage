@@ -179,7 +179,13 @@
     "creditNote": "Handing over with money still owed adds it to the owner's debt. Only an owner or manager can do this.",
     "closed": "This job is closed.",
     "backToJob": "Open job",
-    "history": "History of this car"
+    "history": "History of this car",
+    "invoiceTitle": "Job invoice No. {no}",
+    "invoiceVehicle": "Car",
+    "invoiceOdometer": "Odometer: {km} km",
+    "invoiceFooter": "Thank you. Drive safely.",
+    "printInvoice": "Print invoice",
+    "invoice": "Invoice"
   },
   "vehicle": {
     "visits": "{count, plural, =0 {No visits yet} one {# visit} other {# visits}}",

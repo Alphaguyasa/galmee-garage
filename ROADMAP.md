@@ -4,8 +4,8 @@ Build order: M-next first, then M-after, then the remaining open items below.
 
 ## M-next: Tier 1 close-out
 
-- [ ] Job invoice/receipt layout (parts and labour lines, 80 mm)
-- [ ] Print and reprint from the job card
+- [x] Job invoice/receipt layout (parts and labour lines, 80 mm)
+- [x] Print and reprint from the job card
 - [x] "Ready" SMS to the customer when the job status becomes ready (queued with the amount due; sent once the SMS sender is live)
 
 ## M-after: Tier 2 and 3
@@ -69,7 +69,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 
 ## M5: Client ready
 
-- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt
+- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (80 mm job invoice done; Telegram copy open)
 - [ ] Data import from Excel/CSV
 - [ ] Export all tenant data to Excel
 - [ ] Error monitoring hook (Sentry, DSN via env)

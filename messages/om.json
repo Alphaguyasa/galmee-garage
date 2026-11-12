@@ -179,7 +179,13 @@
     "creditNote": "Maallaqa utuu hin kaffalamin kennuun gara idaa abbaatti dabalama. Abbaa ykn hogganaa qofatu danda'a.",
     "closed": "Hojiin kun cufameera.",
     "backToJob": "Hojii bani",
-    "history": "Seenaa konkolaataa kanaa"
+    "history": "Seenaa konkolaataa kanaa",
+    "invoiceTitle": "Nagahee hojii Lak. {no}",
+    "invoiceVehicle": "Konkolaataa",
+    "invoiceOdometer": "Kiiloomeetira: {km} km",
+    "invoiceFooter": "Galatoomaa. Nagaan oofaa.",
+    "printInvoice": "Nagahee maxxansi",
+    "invoice": "Nagahee"
   },
   "vehicle": {
     "visits": "{count, plural, =0 {Yeroo hin dhufne} other {Yeroo #}}",
