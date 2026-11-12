@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, Wrench } from "lucide-react";
 import { loadDemoDataAction } from "@/actions/garage";
 import { ActionForm } from "@/components/garage/action-form";
+import { EmptyState } from "@/components/galmee/empty-state";
+import { ListRow, ListSheet } from "@/components/galmee/list-row";
 import { JobRow } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
 import { buttonVariants } from "@/components/ui/button";
@@ -60,18 +62,16 @@ export default async function PlatePage({ searchParams }: { searchParams: Promis
               </Link>
             </div>
           ) : (
-            <ul>
+            <ListSheet>
               {vehicles.map((v) => (
-                <li key={v.id}>
-                  <Link href={`/vehicles/${v.id}`} className="flex items-center justify-between gap-3 border-b py-3 hover:bg-accent/40">
-                    <Plate plate={v.plate} />
-                    <span className="min-w-0 truncate text-sm text-muted-foreground">
-                      {[v.make, v.model].filter(Boolean).join(" ")} {v.ownerName ?? t("noOwner")}
-                    </span>
-                  </Link>
-                </li>
+                <ListRow
+                  key={v.id}
+                  href={`/vehicles/${v.id}`}
+                  title={<Plate plate={v.plate} />}
+                  sub={[[v.make, v.model].filter(Boolean).join(" "), v.ownerName ?? t("noOwner")].filter(Boolean).join(" · ")}
+                />
               ))}
-            </ul>
+            </ListSheet>
           )}
         </section>
       ) : null}
@@ -79,13 +79,13 @@ export default async function PlatePage({ searchParams }: { searchParams: Promis
       <section className="grid gap-1">
         <h2 className="text-lg font-semibold">{t("inYard", { count: jobs.length })}</h2>
         {jobs.length === 0 ? (
-          <p className="text-muted-foreground">{t("emptyYard")}</p>
+          <EmptyState icon={Wrench} message={t("emptyYard")} />
         ) : (
-          <ul>
+          <ListSheet>
             {jobs.map((job) => (
               <JobRow key={job.id} job={job} />
             ))}
-          </ul>
+          </ListSheet>
         )}
       </section>
 

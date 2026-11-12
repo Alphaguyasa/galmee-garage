@@ -53,7 +53,7 @@
   "roles": {
     "owner": "Owner",
     "manager": "Manager",
-    "staff": "Reception"
+    "staff": "Staff"
   },
   "errors": {
     "generic": "Something went wrong. Please try again.",
@@ -62,7 +62,7 @@
     "phone": "Enter an Ethiopian phone number, for example 0911 234 567.",
     "not_allowed": "Your role cannot do this. Ask a manager.",
     "bad_amount": "Enter a valid amount.",
-    "overpayment": "That is more than the guest owes.",
+    "overpayment": "That is more than the customer owes.",
     "bad_plate": "That plate number looks wrong.",
     "complaint_required": "Write what the customer said is wrong.",
     "customer_required": "New car: enter the owner's name.",

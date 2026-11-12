@@ -1,12 +1,12 @@
-import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { CircleCheck, CircleDashed, Clock3, PackageSearch, Truck, Wrench, XCircle, type LucideIcon } from "lucide-react";
+import { ListRow } from "@/components/galmee/list-row";
+import { StatusBadge } from "@/components/galmee/status-badge";
 import { Plate } from "@/components/garage/plate";
 import type { Locale } from "@/i18n/config";
 import { formatBirr } from "@/lib/money";
 import type { JobDTO } from "@/server/dal/garage";
 import type { JobStatus } from "@/server/validation";
-import { cn } from "@/lib/utils";
 
 const ICONS: Record<JobStatus, LucideIcon> = {
   open: Clock3,
@@ -17,49 +17,57 @@ const ICONS: Record<JobStatus, LucideIcon> = {
   cancelled: XCircle,
 };
 
-/** Status is a word and an icon, never colour alone. */
+const TONES: Record<JobStatus, "ok" | "warn" | "sync" | "neutral"> = {
+  open: "neutral",
+  in_progress: "sync",
+  waiting_parts: "warn",
+  ready: "neutral",
+  delivered: "ok",
+  cancelled: "neutral",
+};
+
+/** Status is a word and an icon, never colour alone. "Ready" wears plate yellow, the garage's one bold colour. */
 export function StatusTag({ status }: { status: JobStatus }) {
   const t = useTranslations("status");
-  const Icon = ICONS[status] ?? CircleDashed;
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-sm font-semibold",
-        status === "ready" ? "bg-plate text-foreground" : "bg-muted text-foreground",
-      )}
+    <StatusBadge
+      tone={TONES[status] ?? "neutral"}
+      icon={ICONS[status] ?? CircleDashed}
+      className={status === "ready" ? "bg-plate text-foreground" : undefined}
     >
-      <Icon className="size-4" aria-hidden />
       {t(status)}
-    </span>
+    </StatusBadge>
   );
 }
 
+/** One job in a ListSheet: the plate first, the complaint, then car, customer and mechanic. */
 export function JobRow({ job, showOwes = false }: { job: JobDTO; showOwes?: boolean }) {
   const t = useTranslations("jobs");
   const locale = useLocale() as Locale;
   const vehicleName = [job.vehicle.make, job.vehicle.model].filter(Boolean).join(" ");
   return (
-    <li>
-      <Link href={`/jobs/${job.id}`} className="grid gap-1 border-b py-3 hover:bg-accent/40 focus-visible:bg-accent/40">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <Plate plate={job.vehicle.plate} />
-          <StatusTag status={job.status} />
-        </div>
-        <div className="flex items-baseline justify-between gap-2">
-          <p className="truncate font-medium">{job.complaint}</p>
-          <span className="num shrink-0 text-sm text-muted-foreground">{t("jobNo", { no: job.jobNo })}</span>
-        </div>
-        <p className="flex flex-wrap justify-between gap-x-3 text-sm text-muted-foreground">
-          <span>
+    <ListRow
+      href={`/jobs/${job.id}`}
+      title={<Plate plate={job.vehicle.plate} />}
+      sub={
+        <>
+          <span className="break-words text-foreground">{job.complaint}</span>
+          <span className="break-words">
             {vehicleName ? `${vehicleName} · ` : ""}
-            {job.customer.name}
+            {job.customer.name} · {job.mechanicName ?? t("noMechanic")}
           </span>
-          <span>{job.mechanicName ?? t("noMechanic")}</span>
-        </p>
-        {showOwes && job.balance > 0 ? (
-          <p className="num text-right font-semibold text-destructive">{t("owes", { amount: formatBirr(job.balance, locale) })}</p>
-        ) : null}
-      </Link>
-    </li>
+        </>
+      }
+      right={
+        <>
+          <StatusTag status={job.status} />
+          {showOwes && job.balance > 0 ? (
+            <span className="num font-semibold text-owed">{formatBirr(job.balance, locale)}</span>
+          ) : (
+            <span className="num text-sm text-muted-foreground">{t("jobNo", { no: job.jobNo })}</span>
+          )}
+        </>
+      }
+    />
   );
 }

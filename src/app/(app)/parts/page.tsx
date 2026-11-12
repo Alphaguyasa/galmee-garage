@@ -21,7 +21,7 @@ export default async function PartsPage({ searchParams }: { searchParams: Promis
 
   return (
     <div className="grid gap-4">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <form action="/parts" className="flex items-end gap-2">
         <div className="grid min-w-0 flex-1 gap-2">
           <Label htmlFor="q">{t("search")}</Label>

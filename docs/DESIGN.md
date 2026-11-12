@@ -1,5 +1,12 @@
 # DESIGN.md: Galmee Garage
 
+> Garage uses the **Galmee design system**. Tokens live in `src/app/globals.css`
+> (only `--trade`, tool-chest enamel `#14434A`, plus the plate field's `--plate`
+> are garage-specific), shared components in `src/components/galmee/`. Type is now
+> Atkinson Hyperlegible Next with Noto Sans Ethiopic. The colour and type tables
+> below are superseded by the system; the brief, the yellow plate field and the
+> screen wireframes still hold.
+
 Change this file first, then the code.
 
 ## Brief

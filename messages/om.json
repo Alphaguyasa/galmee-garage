@@ -53,7 +53,7 @@
   "roles": {
     "owner": "Abbaa qabeenyaa",
     "manager": "Hoogganaa",
-    "staff": "Simannaa"
+    "staff": "Hojjetaa"
   },
   "errors": {
     "generic": "Rakkoon uumameera. Maaloo irra deebi'ii yaali.",
@@ -62,7 +62,7 @@
     "phone": "Lakkoofsa bilbila Itoophiyaa galchi, fakkeenyaaf 0911 234 567.",
     "not_allowed": "Gaheen kee kana hin hayyamu. Hoogganaa gaafadhu.",
     "bad_amount": "Hanga sirrii galchi.",
-    "overpayment": "Kun hanga keessummaan qabu caala.",
+    "overpayment": "Kun hanga maamilli irraa qabu caala.",
     "bad_plate": "Lakkoofsi gabatee sirrii miti.",
     "complaint_required": "Rakkoo maamilli jedhe barreessi.",
     "customer_required": "Konkolaataa haaraa: maqaa abbaa galchi.",

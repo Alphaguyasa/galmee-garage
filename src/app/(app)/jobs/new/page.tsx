@@ -15,7 +15,7 @@ export default async function NewJobPage({ searchParams }: { searchParams: Promi
 
   return (
     <div className="grid max-w-md gap-4">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <ActionForm action={openJobAction} submitLabel={t("submit")}>
         <input type="hidden" name="clientRef" value={randomUUID()} />
         <div className="grid gap-2">

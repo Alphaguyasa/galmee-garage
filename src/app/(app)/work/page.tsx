@@ -1,4 +1,7 @@
 import { getTranslations } from "next-intl/server";
+import { Wrench } from "lucide-react";
+import { EmptyState } from "@/components/galmee/empty-state";
+import { ListSheet } from "@/components/galmee/list-row";
 import { JobRow } from "@/components/garage/job-row";
 import { SelectField } from "@/components/garage/fields";
 import { Button } from "@/components/ui/button";
@@ -19,7 +22,7 @@ export default async function WorkPage({ searchParams }: { searchParams: Promise
 
   return (
     <div className="grid gap-4">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <form action="/work" className="flex items-end gap-2">
         <div className="min-w-0 flex-1">
           <SelectField
@@ -32,16 +35,16 @@ export default async function WorkPage({ searchParams }: { searchParams: Promise
         <Button type="submit" size="lg">{t("apply")}</Button>
       </form>
       {jobs.length === 0 ? (
-        <p className="text-muted-foreground">{t("empty")}</p>
+        <EmptyState icon={Wrench} message={t("empty")} />
       ) : (
         [...groups.entries()].map(([name, group]) => (
           <section key={name} className="grid gap-1">
             <h2 className="text-lg font-semibold">{name}</h2>
-            <ul>
+            <ListSheet>
               {group.map((job) => (
                 <JobRow key={job.id} job={job} />
               ))}
-            </ul>
+            </ListSheet>
           </section>
         ))
       )}

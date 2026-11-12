@@ -14,7 +14,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="grid max-w-md gap-5">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <section className="grid gap-2">
         <h2 className="text-lg font-semibold">{t("mechanics")}</h2>
         {mechanics.length === 0 ? (

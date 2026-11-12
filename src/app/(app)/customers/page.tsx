@@ -17,7 +17,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
   const [t, customers] = await Promise.all([getTranslations("customers"), listCustomers(query)]);
   return (
     <div className="grid gap-4">
-      <h1 className="text-2xl font-bold">{t("title")}</h1>
+      <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <form action="/customers" className="flex items-end gap-2">
         <div className="grid min-w-0 flex-1 gap-2">
           <Label htmlFor="q">{t("search")}</Label>

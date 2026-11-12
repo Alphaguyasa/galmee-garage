@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { HandCoins } from "lucide-react";
+import { EmptyState } from "@/components/galmee/empty-state";
+import { ListSheet } from "@/components/galmee/list-row";
+import { MoneySummaryCard } from "@/components/galmee/money-summary-card";
 import { JobRow } from "@/components/garage/job-row";
 import type { Locale } from "@/i18n/config";
 import { formatBirr } from "@/lib/money";
@@ -12,22 +16,19 @@ export default async function UnpaidPage() {
   return (
     <div className="grid gap-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h1 className="text-2xl font-bold">{t("title")}</h1>
+        <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
         <Link href="/customers" className="font-medium text-primary underline underline-offset-4">{t("customers")}</Link>
       </div>
       {jobs.length === 0 ? (
-        <p className="text-muted-foreground">{t("empty")}</p>
+        <EmptyState icon={HandCoins} message={t("empty")} />
       ) : (
         <>
-          <p className="flex items-baseline justify-between gap-3 rounded-md border bg-card p-4">
-            <span className="font-semibold">{t("totalOwed")}</span>
-            <span className="num text-xl font-bold text-destructive">{formatBirr(totalOwed, locale)}</span>
-          </p>
-          <ul>
+          <MoneySummaryCard tone="owed" label={t("totalOwed")} figure={formatBirr(totalOwed, locale)} />
+          <ListSheet>
             {jobs.map((job) => (
               <JobRow key={job.id} job={job} showOwes />
             ))}
-          </ul>
+          </ListSheet>
         </>
       )}
     </div>

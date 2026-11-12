@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
+import { ListSheet } from "@/components/galmee/list-row";
 import { JobRow } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
 import type { Locale } from "@/i18n/config";
@@ -19,7 +20,7 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
   return (
     <div className="grid gap-5">
       <header className="grid gap-1">
-        <h1 className="text-2xl font-bold">{customer.name}</h1>
+        <h1 className="text-[1.5625rem] leading-tight font-bold">{customer.name}</h1>
         {customer.phone ? (
           <a href={`tel:${customer.phone}`} className="num justify-self-start underline underline-offset-4">
             {customer.phone}
@@ -50,11 +51,11 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
       {unpaidJobs.length > 0 ? (
         <section className="grid gap-1">
           <h2 className="text-lg font-semibold">{t("unpaidJobs")}</h2>
-          <ul>
+          <ListSheet>
             {unpaidJobs.map((job) => (
               <JobRow key={job.id} job={job} showOwes />
             ))}
-          </ul>
+          </ListSheet>
         </section>
       ) : null}
 
