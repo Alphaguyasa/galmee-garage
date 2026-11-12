@@ -230,7 +230,12 @@
     "receive": "Receive stock",
     "receiveQty": "Quantity received",
     "received": "Stock updated",
-    "addManagerOnly": "An owner or manager can add parts and receive stock."
+    "addManagerOnly": "An owner or manager can add parts and receive stock.",
+    "filter": "Show",
+    "all": "All ({count})",
+    "lowFilter": "Low stock ({count})",
+    "noneLow": "No part is at or below its reorder level.",
+    "reorderAt": "reorder at {level}"
   },
   "settings": {
     "title": "Setup",

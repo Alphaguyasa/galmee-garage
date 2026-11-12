@@ -230,7 +230,12 @@
     "receive": "ዕቃ ተቀበል",
     "receiveQty": "የተቀበሉት ብዛት",
     "received": "መጋዘን ተስተካክሏል",
-    "addManagerOnly": "ዕቃ መጨመርና መቀበል ባለቤት ወይም ሥራ አስኪያጅ ብቻ ነው።"
+    "addManagerOnly": "ዕቃ መጨመርና መቀበል ባለቤት ወይም ሥራ አስኪያጅ ብቻ ነው።",
+    "filter": "አሳይ",
+    "all": "ሁሉም ({count})",
+    "lowFilter": "ያለቀ/የቀነሰ ({count})",
+    "noneLow": "ከትዕዛዝ ደረጃው በታች የወረደ ዕቃ የለም።",
+    "reorderAt": "በ{level} ይታዘዝ"
   },
   "settings": {
     "title": "ቅንብር",

@@ -13,7 +13,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [x] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
 - [ ] Offline queue for job payments
 - [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
-- [ ] Reorder-level low-stock list
+- [x] Reorder-level low-stock list
 - [ ] Staff invite and per-mechanic labour report
 - [ ] Service-due reminders (by km or months) queued as SMS
 - [ ] Export all tenant data to Excel

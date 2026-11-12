@@ -1,23 +1,41 @@
+import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { TriangleAlert } from "lucide-react";
 import { addItemAction, receiveStockAction } from "@/actions/garage";
+import { StatusBadge } from "@/components/galmee/status-badge";
 import { ActionForm } from "@/components/garage/action-form";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { Locale } from "@/i18n/config";
 import { formatBirr } from "@/lib/money";
 import { listParts } from "@/server/dal/garage";
 import { getSession } from "@/server/dal/session";
+import { cn } from "@/lib/utils";
 import { z } from "zod";
 
 const searchSchema = z.string().trim().max(60);
 
-export default async function PartsPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
-  const { q } = await searchParams;
+export default async function PartsPage({ searchParams }: { searchParams: Promise<{ q?: string; low?: string }> }) {
+  const { q, low: lowParam } = await searchParams;
+  const lowOnly = lowParam === "1";
   const query = searchSchema.safeParse(q ?? "").data ?? "";
   const locale = (await getLocale()) as Locale;
-  const [t, parts, { profile }] = await Promise.all([getTranslations("partsPage"), listParts(locale, query), getSession()]);
+  const [t, allParts, { profile }] = await Promise.all([getTranslations("partsPage"), listParts(locale, query), getSession()]);
   const canManage = profile.role !== "staff";
+  const isLow = (p: { onHand: number; reorderLevel: number }) => p.onHand <= p.reorderLevel;
+  const lowCount = allParts.filter(isLow).length;
+  // The reorder list puts the biggest shortfall first.
+  const parts = lowOnly
+    ? allParts.filter(isLow).sort((a, b) => a.onHand - a.reorderLevel - (b.onHand - b.reorderLevel))
+    : allParts;
+  const filterHref = (lowView: boolean) => {
+    const params = new URLSearchParams();
+    if (query) params.set("q", query);
+    if (lowView) params.set("low", "1");
+    const qs = params.toString();
+    return qs ? `/parts?${qs}` : "/parts";
+  };
 
   return (
     <div className="grid grid-cols-1 gap-4">
@@ -30,12 +48,29 @@ export default async function PartsPage({ searchParams }: { searchParams: Promis
         <Button type="submit" size="lg">{t("searchAction")}</Button>
       </form>
 
+      <nav className="flex flex-wrap gap-2" aria-label={t("filter")}>
+        <Link
+          href={filterHref(false)}
+          aria-current={!lowOnly ? "page" : undefined}
+          className={cn(buttonVariants({ variant: lowOnly ? "outline" : "default" }), lowOnly && "bg-card")}
+        >
+          {t("all", { count: allParts.length })}
+        </Link>
+        <Link
+          href={filterHref(true)}
+          aria-current={lowOnly ? "page" : undefined}
+          className={cn(buttonVariants({ variant: lowOnly ? "default" : "outline" }), !lowOnly && "bg-card")}
+        >
+          {t("lowFilter", { count: lowCount })}
+        </Link>
+      </nav>
+
       {parts.length === 0 ? (
-        <p className="text-muted-foreground">{query ? t("noMatch") : t("empty")}</p>
+        <p className="text-muted-foreground">{lowOnly ? t("noneLow") : query ? t("noMatch") : t("empty")}</p>
       ) : (
         <ul>
           {parts.map((p) => {
-            const low = p.onHand <= p.reorderLevel;
+            const low = isLow(p);
             return (
               <li key={p.id} className="grid gap-1 border-b py-3">
                 <div className="flex items-baseline justify-between gap-3">
@@ -44,10 +79,15 @@ export default async function PartsPage({ searchParams }: { searchParams: Promis
                 </div>
                 <p className="num flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
                   <span>{p.sku ?? "—"}</span>
-                  <span className={low ? "font-semibold text-destructive" : ""}>
+                  <span className={low ? "font-semibold text-foreground" : ""}>
                     {t("onHand")}: {p.onHand} {p.unit}
-                    {low ? ` · ${t("low")}` : ""}
+                    {low ? ` · ${t("reorderAt", { level: p.reorderLevel })}` : ""}
                   </span>
+                  {low ? (
+                    <StatusBadge tone="warn" icon={TriangleAlert}>
+                      {t("low")}
+                    </StatusBadge>
+                  ) : null}
                 </p>
                 {canManage ? (
                   <details>

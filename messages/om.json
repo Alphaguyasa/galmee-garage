@@ -230,7 +230,12 @@
     "receive": "Meeshaa fudhadhu",
     "receiveQty": "Baay'ina fudhatame",
     "received": "Kuusaan haaromfameera",
-    "addManagerOnly": "Meeshaa dabaluu fi fudhachuu abbaa ykn hogganaa qofa."
+    "addManagerOnly": "Meeshaa dabaluu fi fudhachuu abbaa ykn hogganaa qofa.",
+    "filter": "Agarsiisi",
+    "all": "Hunda ({count})",
+    "lowFilter": "Kan xiqqaate ({count})",
+    "noneLow": "Meeshaan sadarkaa ajajaa gadi bu'e hin jiru.",
+    "reorderAt": "{level} irratti ajaji"
   },
   "settings": {
     "title": "Qindaa'ina",
