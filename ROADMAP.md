@@ -1,5 +1,25 @@
 # ROADMAP: Galmee Garage
 
+Build order: M-next first, then M-after, then the remaining open items below.
+
+## M-next: Tier 1 close-out
+
+- [ ] Job invoice/receipt layout (parts and labour lines, 80 mm)
+- [ ] Print and reprint from the job card
+- [x] "Ready" SMS to the customer when the job status becomes ready (queued with the amount due; sent once the SMS sender is live)
+
+## M-after: Tier 2 and 3
+
+- [ ] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
+- [ ] Offline queue for job payments
+- [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
+- [ ] Reorder-level low-stock list
+- [ ] Staff invite and per-mechanic labour report
+- [ ] Service-due reminders (by km or months) queued as SMS
+- [ ] Export all tenant data to Excel
+
+Not planned for now: vehicle photos, and a separate quotes module (a "quoted" job status covers estimates). The demo data loader is finished.
+
 ## M0: Foundation (shared pattern for all Galmee products)
 
 - [x] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
