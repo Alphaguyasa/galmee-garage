@@ -1,5 +1,6 @@
 -- Daily report test for Galmee Garage: totals, tenant isolation and anon denial. Rolls back via the final RAISE.
--- Rolls back via the final RAISE. Result on 2026-11-12: all six checks matched.
+-- Result on 2026-11-12: all six checks matched.
+do $$
 declare ua uuid := gen_random_uuid(); ub uuid := gen_random_uuid();
   ta uuid; tb uuid; ia uuid; ib uuid; ja uuid; jb uuid; r text := ''; ok boolean; err text; rec record; today date := (now() at time zone 'Africa/Addis_Ababa')::date;
 begin
