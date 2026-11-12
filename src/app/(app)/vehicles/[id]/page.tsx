@@ -24,7 +24,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ id: st
   const { vehicle, jobs } = history;
   const hasOpen = jobs.some((j) => j.status !== "delivered");
   return (
-    <div className="grid gap-5">
+    <div className="grid grid-cols-1 gap-5">
       <header className="grid gap-2">
         <Plate plate={vehicle.plate} className="justify-self-start text-2xl" />
         <p className="font-medium">

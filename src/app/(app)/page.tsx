@@ -30,7 +30,7 @@ export default async function PlatePage({ searchParams }: { searchParams: Promis
   ]);
 
   return (
-    <div className="grid gap-6">
+    <div className="grid grid-cols-1 gap-6">
       <form action="/" className="grid gap-2">
         <Label htmlFor="q" className="text-base font-semibold">
           {t("plateLabel")}
@@ -43,7 +43,7 @@ export default async function PlatePage({ searchParams }: { searchParams: Promis
             placeholder={t("platePlaceholder")}
             autoCapitalize="characters"
             autoComplete="off"
-            className="num h-14 min-w-0 flex-1 rounded border-2 border-foreground bg-plate px-3 text-2xl font-bold tracking-wide text-foreground outline-none placeholder:text-foreground/50 focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            className="num h-14 w-0 min-w-0 flex-1 rounded border-2 border-foreground bg-plate px-3 text-2xl font-bold tracking-wide text-foreground outline-none placeholder:text-foreground/50 focus-visible:ring-[3px] focus-visible:ring-ring/50"
           />
           <button type="submit" aria-label={t("search")} className={cn(buttonVariants({ size: "lg" }), "h-14 w-14 shrink-0 px-0")}>
             <Search aria-hidden className="size-6" />

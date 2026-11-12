@@ -18,7 +18,7 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
   if (!detail) notFound();
   const { customer, vehicles, unpaidJobs, ledger } = detail;
   return (
-    <div className="grid gap-5">
+    <div className="grid grid-cols-1 gap-5">
       <header className="grid gap-1">
         <h1 className="text-[1.5625rem] leading-tight font-bold">{customer.name}</h1>
         {customer.phone ? (

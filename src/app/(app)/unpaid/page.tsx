@@ -14,7 +14,7 @@ export default async function UnpaidPage() {
   const [t, jobs] = await Promise.all([getTranslations("unpaid"), listUnpaidJobs()]);
   const totalOwed = jobs.reduce((sum, j) => sum + Number(j.balance), 0);
   return (
-    <div className="grid gap-4">
+    <div className="grid grid-cols-1 gap-4">
       <div className="flex items-baseline justify-between gap-3">
         <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
         <Link href="/customers" className="font-medium text-primary underline underline-offset-4">{t("customers")}</Link>

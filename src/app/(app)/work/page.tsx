@@ -21,7 +21,7 @@ export default async function WorkPage({ searchParams }: { searchParams: Promise
   }
 
   return (
-    <div className="grid gap-4">
+    <div className="grid grid-cols-1 gap-4">
       <h1 className="text-[1.5625rem] leading-tight font-bold">{t("title")}</h1>
       <form action="/work" className="flex items-end gap-2">
         <div className="min-w-0 flex-1">

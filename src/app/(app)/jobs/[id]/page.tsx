@@ -61,7 +61,7 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
   const nextSteps = NEXT[job.status];
 
   return (
-    <div className="grid gap-6">
+    <div className="grid grid-cols-1 gap-6">
       <header className="grid gap-2">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <Link href={`/vehicles/${job.vehicle.id}`} aria-label={t("history")}>
@@ -69,7 +69,7 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
           </Link>
           <StatusTag status={job.status} />
         </div>
-        <h1 className="text-xl font-bold text-balance">{job.complaint}</h1>
+        <h1 className="text-[1.5625rem] leading-tight font-bold text-balance break-words">{job.complaint}</h1>
         <p className="text-sm text-muted-foreground">
           {tJobs("jobNo", { no: job.jobNo })} · {t("openedOn", { date: formatEthiopianDate(job.openedAt.slice(0, 10), locale) })}
           {vehicleName ? ` · ${vehicleName}` : ""}
@@ -109,15 +109,15 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
         ) : (
           <ul>
             {lines.parts.map((p) => (
-              <li key={p.id} className="flex items-center justify-between gap-3 border-b py-2">
-                <span className="min-w-0">
-                  <span className="block truncate font-medium">{p.name}</span>
+              <li key={p.id} className="flex items-start justify-between gap-3 border-b py-2">
+                <span className="min-w-0 flex-1">
+                  <span className="block font-medium break-words">{p.name}</span>
                   <span className="num text-sm text-muted-foreground">
                     {p.qty} × {formatBirr(p.unitPrice, locale)}
                   </span>
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="num">{formatBirr(p.lineTotal, locale)}</span>
+                <span className="flex shrink-0 flex-col items-end gap-1">
+                  <span className="num font-medium whitespace-nowrap">{formatBirr(p.lineTotal, locale)}</span>
                   {open ? (
                     <ActionForm action={reversePartAction} submitLabel={t("remove")} variant="outline" className="inline">
                       <input type="hidden" name="job" value={job.id} />
@@ -163,13 +163,13 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
         ) : (
           <ul>
             {lines.labour.map((l) => (
-              <li key={l.id} className="flex items-center justify-between gap-3 border-b py-2">
-                <span className="min-w-0">
-                  <span className="block truncate font-medium">{l.description}</span>
+              <li key={l.id} className="flex items-start justify-between gap-3 border-b py-2">
+                <span className="min-w-0 flex-1">
+                  <span className="block font-medium break-words">{l.description}</span>
                   {l.mechanicName ? <span className="text-sm text-muted-foreground">{l.mechanicName}</span> : null}
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="num">{formatBirr(l.amount, locale)}</span>
+                <span className="flex shrink-0 flex-col items-end gap-1">
+                  <span className="num font-medium whitespace-nowrap">{formatBirr(l.amount, locale)}</span>
                   {open ? (
                     <ActionForm action={reverseLabourAction} submitLabel={t("remove")} variant="outline" className="inline">
                       <input type="hidden" name="job" value={job.id} />
@@ -209,7 +209,7 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
                 <span className="text-muted-foreground">
                   {t(`methods.${p.method === "chapa" ? "other" : p.method}`)} · {formatEthiopianDate(p.createdAt.slice(0, 10), locale)}
                 </span>
-                <span className="num">{formatBirr(p.amount, locale)}</span>
+                <span className="num shrink-0 whitespace-nowrap">{formatBirr(p.amount, locale)}</span>
               </li>
             ))}
           </ul>
