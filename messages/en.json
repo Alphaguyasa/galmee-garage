@@ -333,5 +333,14 @@
     "footer": "Open or refresh this page any time for the latest news.",
     "goneTitle": "This link is no longer active",
     "goneBody": "The garage switched it off, or the car was handed over more than 14 days ago. Call the garage for news."
+  },
+  "offlineQueue": {
+    "queuedPayment": "Job payment · {amount}",
+    "paymentQueued": "No network: the payment of {amount} is saved on this phone and will be sent when the internet is back.",
+    "error_job_not_found": "This job is no longer in your garage.",
+    "error_job_closed": "The job was closed before the payment arrived.",
+    "error_bad_amount": "The amount was not accepted.",
+    "error_overpayment": "More than the job still owes.",
+    "error_other": "The server refused this. Check it and enter it again."
   }
 }

@@ -11,6 +11,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       userName={profile.fullName}
       roleLabel={tRoles(profile.role)}
       canManage={profile.role !== "staff"}
+      role={profile.role}
     >
       {children}
     </AppShell>

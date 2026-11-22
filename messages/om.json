@@ -333,5 +333,14 @@
     "footer": "Odeeffannoo haaraaf yeroo kamiyyuu fuula kana banaa ykn haaromsaa.",
     "goneTitle": "Liinkiin kun hin hojjetu",
     "goneBody": "Garaajiin dhaamseera, ykn konkolaataan erga kennamee guyyaa 14 ol ta'eera. Odeeffannoof garaajii bilbilaa."
+  },
+  "offlineQueue": {
+    "queuedPayment": "Kaffaltii hojii · {amount}",
+    "paymentQueued": "Neetworkiin hin jiru: kaffaltiin {amount} bilbila kana irratti olkaa'ameera, yeroo interneetiin deebi'u ni ergama.",
+    "error_job_not_found": "Hojiin kun garaajii keessan keessa hin jiru.",
+    "error_job_closed": "Hojiin osoo kaffaltiin hin gahin cufameera.",
+    "error_bad_amount": "Hangi kun hin fudhatamne.",
+    "error_overpayment": "Hangi kun kan hojiin irra hafe caala.",
+    "error_other": "Sarvarichi kana hin fudhanne. Mirkaneessiitii irra deebi'aa galchaa."
   }
 }

@@ -15,7 +15,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 ## M-after: Tier 2 and 3
 
 - [x] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
-- [ ] Offline queue for job payments
+- [x] Offline queue for job payments
 - [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
 - [x] Reorder-level low-stock list
 - [ ] Staff invite

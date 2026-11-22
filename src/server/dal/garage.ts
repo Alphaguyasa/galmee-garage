@@ -241,12 +241,6 @@ export async function reverseLabour(id: string): Promise<Result> {
   return error ? failure(error.message) : { ok: true, data: undefined };
 }
 
-export async function payJob(input: { job: string; amount: number; method: Enums<"pay_method">; reference?: string; clientRef: string }): Promise<Result> {
-  const supabase = await createClient();
-  const { error } = await supabase.rpc("gr_pay_job", { p_job: input.job, p_amount: input.amount, p_method: input.method, p_reference: input.reference, p_client_ref: input.clientRef });
-  return error ? failure(error.message) : { ok: true, data: undefined };
-}
-
 export async function updateJob(input: { job: string; mechanic?: string; workDone?: string; odometer?: number }): Promise<Result> {
   const supabase = await createClient();
   const { error } = await supabase.rpc("gr_update_job", { p_job: input.job, p_mechanic: input.mechanic, p_work_done: input.workDone, p_odometer: input.odometer });

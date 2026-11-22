@@ -76,14 +76,6 @@ export const addLabourSchema = z.object({
 
 export const reverseSchema = z.object({ job: uuid, id: uuid });
 
-export const payJobSchema = z.object({
-  job: uuid,
-  amount: money,
-  method: z.enum(PAY_METHODS),
-  reference: optionalText(80),
-  clientRef: uuid,
-});
-
 export const updateJobSchema = z.object({
   job: uuid,
   mechanic: optionalUuid,

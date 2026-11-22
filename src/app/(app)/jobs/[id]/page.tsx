@@ -7,7 +7,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import {
   addLabourAction,
   addPartAction,
-  payJobAction,
   reverseLabourAction,
   revokeStatusLinkAction,
   reversePartAction,
@@ -19,6 +18,7 @@ import { ActionForm } from "@/components/garage/action-form";
 import { DateField, SelectField } from "@/components/garage/fields";
 import { StatusTag } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
+import { JobPaymentForm } from "@/components/garage/job-payment-form";
 import { StatusLinkShare } from "@/components/garage/status-link-share";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +29,7 @@ import { formatBirr } from "@/lib/money";
 import { getJob, getJobLines, listMechanics, listParts } from "@/server/dal/garage";
 import { getSession } from "@/server/dal/session";
 import { getStatusLinkToken } from "@/server/dal/status-link";
-import { PAY_METHODS, uuidParam, type JobStatus } from "@/server/validation";
+import { uuidParam, type JobStatus } from "@/server/validation";
 
 const NEXT: Record<JobStatus, JobStatus[]> = {
   open: ["in_progress", "waiting_parts", "ready"],
@@ -257,21 +257,7 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
           </ul>
         )}
         {job.balance > 0 && job.status !== "cancelled" ? (
-          <ActionForm action={payJobAction} submitLabel={t("recordPayment")} doneLabel={t("saved")}>
-            <input type="hidden" name="job" value={job.id} />
-            <input type="hidden" name="clientRef" value={randomUUID()} />
-            <div className="grid grid-cols-2 gap-3">
-              <div className="grid gap-2">
-                <Label htmlFor="payAmount">{t("amount")}</Label>
-                <Input id="payAmount" name="amount" inputMode="decimal" required defaultValue={job.balance} />
-              </div>
-              <SelectField name="method" label={t("method")} options={PAY_METHODS.map((m) => ({ value: m, label: t(`methods.${m}`) }))} />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="reference">{t("reference")}</Label>
-              <Input id="reference" name="reference" maxLength={80} autoComplete="off" />
-            </div>
-          </ActionForm>
+          <JobPaymentForm jobId={job.id} balance={job.balance} />
         ) : null}
       </section>
 

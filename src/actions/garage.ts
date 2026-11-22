@@ -13,7 +13,6 @@ import {
   mechanicIdSchema,
   mechanicSchema,
   newJobSchema,
-  payJobSchema,
   receiveSchema,
   reverseSchema,
   setStatusSchema,
@@ -82,16 +81,6 @@ export async function reverseLabourAction(_prev: ActionState, formData: FormData
   const parsed = reverseSchema.safeParse(formToObject(formData, ["job", "id"]));
   if (!parsed.success) return { error: "form" };
   const result = await garage.reverseLabour(parsed.data.id);
-  if (!result.ok) return { error: result.error };
-  refreshJob(parsed.data.job);
-  return { done: true };
-}
-
-export async function payJobAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
-  await requireLogin();
-  const parsed = payJobSchema.safeParse(formToObject(formData, ["job", "amount", "method", "reference", "clientRef"]));
-  if (!parsed.success) return { error: "form" };
-  const result = await garage.payJob(parsed.data);
   if (!result.ok) return { error: result.error };
   refreshJob(parsed.data.job);
   return { done: true };
