@@ -8,6 +8,10 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [x] Print and reprint from the job card
 - [x] "Ready" SMS to the customer when the job status becomes ready (queued with the amount due; sent once the SMS sender is live)
 
+## Customer status link
+
+- [x] Courtesy status link: a private link per job that the customer opens on any phone, no login (received, in repair, waiting for parts, ready, handed over; amount due once ready; can be switched off; stops showing 14 days after hand-over)
+
 ## M-after: Tier 2 and 3
 
 - [x] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV

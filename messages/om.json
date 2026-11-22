@@ -288,5 +288,50 @@
     "byMechanic": "Hojii harkaa makaanikaan",
     "noMechanic": "Makaanikii hin ramadamne",
     "mechanicJobs": "Hojii {count}"
+  },
+  "statusLink": {
+    "title": "Liinkii haala maamilaaf",
+    "offNote": "Maamilli hojii kana bilbila isaatiin akka hordofu liinkii ergi: seenuu, appii ykn bilbiluu hin barbaachisu.",
+    "onNote": "Maamilli konkolaataan eessa akka jiru, yeroo qophaa'u immoo maallaqa kaffalamu ni arga. Guyyaa 14 erga kennamee booda hin mul'atu.",
+    "create": "Liinkii haalaa uumi",
+    "copy": "Garagalchi",
+    "copied": "Garagalfameera",
+    "share": "Qoodi",
+    "switchOff": "Liinkii dhaamsi",
+    "linkLabel": "Liinkii haalaa",
+    "shareText": "Suphaa {plate} asitti hordofaa"
+  },
+  "statusPage": {
+    "title": "Haala suphaa",
+    "car": "Konkolaataa {plate}",
+    "jobNo": "Hojii #{no}",
+    "broughtIn": "kan seene {date}",
+    "progress": "Adeemsa suphaa",
+    "steps": {
+      "received": "Fudhatameera",
+      "in_progress": "Suphaa irra jira",
+      "waiting_parts": "Meeshaa eegaa jira",
+      "ready": "Fudhachuuf qophaa'eera",
+      "delivered": "Kennameera"
+    },
+    "notes": {
+      "received": "Konkolaataan makaanikii eegaa jira.",
+      "in_progress": "Makaanikiin konkolaataa hojjechaa jira.",
+      "waiting_parts": "Hojiin hanga meeshaan dhufutti dhaabateera.",
+      "ready": "Dhufaatii konkolaataa keessan fudhadhaa.",
+      "delivered": "Dhufuu keessaniif galatoomaa."
+    },
+    "state": {
+      "done": "xumurameera",
+      "current": "amma",
+      "todo": "kan hafe"
+    },
+    "cancelled": "Hojiin kun haqameera. Gaaffii yoo qabaattan garaajii bilbilaa.",
+    "total": "Waliigala",
+    "amountDue": "Kan kaffalamu",
+    "call": "Garaajii bilbilaa: {phone}",
+    "footer": "Odeeffannoo haaraaf yeroo kamiyyuu fuula kana banaa ykn haaromsaa.",
+    "goneTitle": "Liinkiin kun hin hojjetu",
+    "goneBody": "Garaajiin dhaamseera, ykn konkolaataan erga kennamee guyyaa 14 ol ta'eera. Odeeffannoof garaajii bilbilaa."
   }
 }

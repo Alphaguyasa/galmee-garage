@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as garage from "@/server/dal/garage";
+import * as statusLink from "@/server/dal/status-link";
 import { getUserId } from "@/server/dal/session";
 import {
   addLabourSchema,
@@ -17,6 +18,7 @@ import {
   reverseSchema,
   setStatusSchema,
   updateJobSchema,
+  uuidParam,
 } from "@/server/validation";
 
 /** `error` is a key in the `errors` message namespace. */
@@ -161,5 +163,25 @@ export async function loadDemoDataAction(): Promise<ActionState> {
   if (!result.ok) return { error: result.error };
   revalidatePath("/");
   revalidatePath("/parts");
+  return { done: true };
+}
+
+export async function shareStatusLinkAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const job = uuidParam.safeParse(formData.get("job"));
+  if (!job.success) return { error: "form" };
+  const result = await statusLink.createStatusLink(job.data);
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/jobs/${job.data}`);
+  return { done: true };
+}
+
+export async function revokeStatusLinkAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await requireLogin();
+  const job = uuidParam.safeParse(formData.get("job"));
+  if (!job.success) return { error: "form" };
+  const result = await statusLink.revokeStatusLink(job.data);
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/jobs/${job.data}`);
   return { done: true };
 }

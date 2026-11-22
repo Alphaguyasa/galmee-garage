@@ -348,6 +348,36 @@ export type Database = {
           },
         ]
       }
+      gr_status_links: {
+        Row: {
+          id: string
+          tenant_id: string
+          job_id: string
+          token: string
+          garage_name: string
+          garage_phone: string | null
+          plate: string
+          vehicle_label: string | null
+          created_by: string | null
+          created_at: string
+          revoked_at: string | null
+        }
+        Insert: {
+          job_id: string
+        }
+        Update: {
+          revoked_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gr_status_links_tenant_id_job_id_fkey"
+            columns: ["tenant_id", "job_id"]
+            isOneToOne: false
+            referencedRelation: "gr_job_cards"
+            referencedColumns: ["tenant_id", "id"]
+          },
+        ]
+      }
       audit_log: {
         Row: {
           action: string

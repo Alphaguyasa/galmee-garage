@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { randomUUID } from "node:crypto";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { Printer } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -8,14 +9,17 @@ import {
   addPartAction,
   payJobAction,
   reverseLabourAction,
+  revokeStatusLinkAction,
   reversePartAction,
   setStatusAction,
+  shareStatusLinkAction,
   updateJobAction,
 } from "@/actions/garage";
 import { ActionForm } from "@/components/garage/action-form";
 import { DateField, SelectField } from "@/components/garage/fields";
 import { StatusTag } from "@/components/garage/job-row";
 import { Plate } from "@/components/garage/plate";
+import { StatusLinkShare } from "@/components/garage/status-link-share";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,6 +28,7 @@ import { formatEthiopianDate } from "@/lib/ethiopian-date";
 import { formatBirr } from "@/lib/money";
 import { getJob, getJobLines, listMechanics, listParts } from "@/server/dal/garage";
 import { getSession } from "@/server/dal/session";
+import { getStatusLinkToken } from "@/server/dal/status-link";
 import { PAY_METHODS, uuidParam, type JobStatus } from "@/server/validation";
 
 const NEXT: Record<JobStatus, JobStatus[]> = {
@@ -40,21 +45,32 @@ const STATUS_LABEL: Partial<Record<JobStatus, "markInRepair" | "markWaitingParts
   ready: "markReady",
   delivered: "deliver",
 };
+/** Origin of this request, so the shared link points at the same site the staff use. */
+async function requestOrigin() {
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  return `${proto}://${host}`;
+}
 const addisToday = () => new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
 export default async function JobPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!uuidParam.safeParse(id).success) notFound();
   const locale = (await getLocale()) as Locale;
-  const [job, lines, mechanics, parts, { profile }, t] = await Promise.all([
+  const [job, lines, mechanics, parts, { profile }, t, linkToken, tLink] = await Promise.all([
     getJob(id),
     getJobLines(id, locale),
     listMechanics(),
     listParts(locale),
     getSession(),
     getTranslations("job"),
+    getStatusLinkToken(id),
+    getTranslations("statusLink"),
   ]);
   if (!job) notFound();
+  const linkUrl = linkToken ? `${await requestOrigin()}/s/${linkToken}` : null;
+  const linkOpen = job.status !== "cancelled" && !(job.status === "delivered" && !linkToken);
   const tNew = await getTranslations("newJob");
   const tJobs = await getTranslations("jobs");
   const open = job.status !== "delivered" && job.status !== "cancelled";
@@ -108,6 +124,25 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
         <Printer aria-hidden />
         {t("printInvoice")}
       </Link>
+
+      {linkOpen ? (
+        <section className="grid gap-3 rounded-md border bg-card p-4 md:max-w-sm" aria-labelledby="status-link-title">
+          <h2 id="status-link-title" className="text-lg font-semibold">{tLink("title")}</h2>
+          <p className="text-sm text-muted-foreground">{linkUrl ? tLink("onNote") : tLink("offNote")}</p>
+          {linkUrl ? (
+            <>
+              <StatusLinkShare url={linkUrl} shareText={tLink("shareText", { plate: job.vehicle.plate })} />
+              <ActionForm action={revokeStatusLinkAction} submitLabel={tLink("switchOff")} variant="outline">
+                <input type="hidden" name="job" value={job.id} />
+              </ActionForm>
+            </>
+          ) : (
+            <ActionForm action={shareStatusLinkAction} submitLabel={tLink("create")} variant="outline">
+              <input type="hidden" name="job" value={job.id} />
+            </ActionForm>
+          )}
+        </section>
+      ) : null}
 
       <section className="grid gap-2">
         <h2 className="text-lg font-semibold">{t("partsTitle")}</h2>

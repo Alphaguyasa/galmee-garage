@@ -288,5 +288,50 @@
     "byMechanic": "Labour by mechanic",
     "noMechanic": "No mechanic named",
     "mechanicJobs": "{count, plural, one {# job} other {# jobs}}"
+  },
+  "statusLink": {
+    "title": "Status link for the customer",
+    "offNote": "Send the customer a link to follow this job on their phone: no login, no app, no phone calls.",
+    "onNote": "The customer sees where the car is and, once it is ready, the amount due. It stops showing 14 days after hand-over.",
+    "create": "Create status link",
+    "copy": "Copy",
+    "copied": "Copied",
+    "share": "Share",
+    "switchOff": "Switch link off",
+    "linkLabel": "Status link",
+    "shareText": "Follow the repair of {plate} here"
+  },
+  "statusPage": {
+    "title": "Repair status",
+    "car": "Car {plate}",
+    "jobNo": "Job #{no}",
+    "broughtIn": "brought in {date}",
+    "progress": "Repair progress",
+    "steps": {
+      "received": "Received",
+      "in_progress": "In repair",
+      "waiting_parts": "Waiting for parts",
+      "ready": "Ready to collect",
+      "delivered": "Handed over"
+    },
+    "notes": {
+      "received": "The car is in the queue for a mechanic.",
+      "in_progress": "A mechanic is working on the car.",
+      "waiting_parts": "Work is paused until a part arrives.",
+      "ready": "Come and collect the car.",
+      "delivered": "Thank you for coming."
+    },
+    "state": {
+      "done": "done",
+      "current": "now",
+      "todo": "to come"
+    },
+    "cancelled": "This job was cancelled. Call the garage if you have questions.",
+    "total": "Total",
+    "amountDue": "Amount due",
+    "call": "Call the garage: {phone}",
+    "footer": "Open or refresh this page any time for the latest news.",
+    "goneTitle": "This link is no longer active",
+    "goneBody": "The garage switched it off, or the car was handed over more than 14 days ago. Call the garage for news."
   }
 }
