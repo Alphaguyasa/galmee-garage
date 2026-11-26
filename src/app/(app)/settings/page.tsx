@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { BarChart3 } from "lucide-react";
+import { BarChart3, Users } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { addMechanicAction, setMechanicActiveAction } from "@/actions/garage";
 import { ActionForm } from "@/components/garage/action-form";
@@ -21,6 +21,10 @@ export default async function SettingsPage() {
       <Link href="/reports" className={`${buttonVariants({ variant: "outline", size: "lg" })} h-auto min-h-12 justify-start bg-card py-3 text-left whitespace-normal`}>
         <BarChart3 aria-hidden />
         {tReports("link")}
+      </Link>
+      <Link href="/staff" className={`${buttonVariants({ variant: "outline", size: "lg" })} h-auto min-h-12 justify-start bg-card py-3 text-left whitespace-normal`}>
+        <Users aria-hidden />
+        {t("staffLink")}
       </Link>
       <section className="grid gap-2">
         <h2 className="text-lg font-semibold">{t("mechanics")}</h2>

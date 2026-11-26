@@ -18,7 +18,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [x] Offline queue for job payments
 - [x] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
 - [x] Reorder-level low-stock list
-- [ ] Staff invite
+- [x] Staff invite
 - [x] Per-mechanic labour report
 - [ ] Service-due reminders (by km or months) queued as SMS
 - [x] Export all tenant data to Excel
@@ -34,7 +34,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 - [x] next-intl with `am`, `om`, `en`; language switcher; Ethiopic-friendly font (Noto Sans Ethiopic)
 - [x] Ethiopian calendar date display helper + tests
 - [x] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
-- [ ] Staff management (owner only): invite staff, set role
+- [x] Staff management (owner only): invite staff, set role
 - [x] Generated Supabase TypeScript types committed
 
 ## M1: Core screens

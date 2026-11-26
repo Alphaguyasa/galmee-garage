@@ -45,7 +45,8 @@
     "error": "Gaaraajii uumuun hin danda'amne. Maaloo irra deebi'ii yaali.",
     "errorPhone": "Lakkoofsa bilbila Itoophiyaa galchi, fkn 0911 234 567.",
     "errorRequired": "Bakkeewwan sadanuu guuti.",
-    "garageName": "Maqaa gaaraajii"
+    "garageName": "Maqaa gaaraajii",
+    "haveCode": "Gaaraajiitti akka hojjetaatti makamaa jirtuu? Koodii affeerraa keessanii galchaa"
   },
   "home": {
     "welcome": "Baga nagaan dhufte, {name}"
@@ -247,7 +248,8 @@
     "added": "Makaanikiin dabalameera",
     "deactivate": "Balleessi",
     "activate": "Deebisi",
-    "inactive": "Asitti hin hojjetu"
+    "inactive": "Asitti hin hojjetu",
+    "staffLink": "Hojjettootaa fi affeerraa"
   },
   "customers": {
     "title": "Maamiltoota",

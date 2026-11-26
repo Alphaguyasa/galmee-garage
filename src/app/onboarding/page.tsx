@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { logout } from "@/actions/auth";
@@ -40,6 +41,9 @@ export default async function OnboardingPage() {
           />
         </CardContent>
       </Card>
+      <Link href="/join" className="inline-flex min-h-12 items-center justify-center rounded-md border border-border px-4 text-center font-semibold">
+        {t("haveCode")}
+      </Link>
       <form action={logout}>
         <Button variant="ghost" className="w-full">
           {tAuth("logout")}

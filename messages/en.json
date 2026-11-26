@@ -45,7 +45,8 @@
     "error": "Could not create the garage. Please try again.",
     "errorPhone": "Enter an Ethiopian phone number, for example 0911 234 567.",
     "errorRequired": "Fill in all three fields.",
-    "garageName": "Garage name"
+    "garageName": "Garage name",
+    "haveCode": "Joining a garage as staff? Enter your invite code"
   },
   "home": {
     "welcome": "Welcome, {name}"
@@ -247,7 +248,8 @@
     "added": "Mechanic added",
     "deactivate": "Remove",
     "activate": "Bring back",
-    "inactive": "Not working here"
+    "inactive": "Not working here",
+    "staffLink": "Staff and invites"
   },
   "customers": {
     "title": "Customers",

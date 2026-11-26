@@ -45,7 +45,8 @@
     "error": "ጋራዡን መፍጠር አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
     "errorPhone": "የኢትዮጵያ ስልክ ቁጥር ያስገቡ፣ ለምሳሌ 0911 234 567።",
     "errorRequired": "ሦስቱንም መስኮች ይሙሉ።",
-    "garageName": "የጋራዥ ስም"
+    "garageName": "የጋራዥ ስም",
+    "haveCode": "ጋራዥን እንደ ሠራተኛ እየተቀላቀሉ ነው? የግብዣ ኮድዎን ያስገቡ"
   },
   "home": {
     "welcome": "እንኳን ደህና መጡ፣ {name}"
@@ -247,7 +248,8 @@
     "added": "መካኒክ ተጨምሯል",
     "deactivate": "አስወግድ",
     "activate": "መልስ",
-    "inactive": "እዚህ አይሠራም"
+    "inactive": "እዚህ አይሠራም",
+    "staffLink": "ሠራተኞችና ግብዣዎች"
   },
   "customers": {
     "title": "ደንበኞች",
