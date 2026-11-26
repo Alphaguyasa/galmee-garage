@@ -21,7 +21,7 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [ ] Staff invite
 - [x] Per-mechanic labour report
 - [ ] Service-due reminders (by km or months) queued as SMS
-- [ ] Export all tenant data to Excel
+- [x] Export all tenant data to Excel
 
 Not planned for now: vehicle photos, and a separate quotes module (a "quoted" job status covers estimates). The demo data loader is finished.
 
@@ -76,7 +76,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 
 - [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (80 mm job invoice done; Telegram copy open)
 - [ ] Data import from Excel/CSV
-- [ ] Export all tenant data to Excel
+- [x] Export all tenant data to Excel
 - [ ] Error monitoring hook (Sentry, DSN via env)
 - [x] README: setup, env vars, deploy steps
 

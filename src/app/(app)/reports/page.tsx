@@ -19,10 +19,11 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
   const { profile } = await getSession();
   if (profile.role === "staff") redirect("/");
   const { from, to } = reportRangeDates(range, addisToday());
-  const [days, mechanics, t, locale] = await Promise.all([
+  const [days, mechanics, t, tx, locale] = await Promise.all([
     dailyReport(from, to),
     labourByMechanic(from, to),
     getTranslations("reports"),
+    getTranslations("export"),
     getLocale() as Promise<Locale>,
   ]);
   const rows = [...days].reverse();
@@ -91,6 +92,18 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
           { key: "collected", header: t("collectedColumn"), num: true, cell: (d) => formatBirr(d.collected, locale) },
         ]}
       />
+      {profile.role === "owner" ? (
+        <section aria-labelledby="export-all" className="grid gap-2 border-t border-border pt-5 md:max-w-md">
+          <h2 id="export-all" className="text-lg font-semibold">
+            {tx("title")}
+          </h2>
+          <p className="text-sm text-muted-foreground">{tx("hint")}</p>
+          <a href="/reports/export-all" download className={cn(buttonVariants({ variant: "outline", size: "lg" }), "justify-self-start bg-card")}>
+            <Download aria-hidden />
+            {tx("button")}
+          </a>
+        </section>
+      ) : null}
     </div>
   );
 }
