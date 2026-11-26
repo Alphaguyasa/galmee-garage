@@ -289,7 +289,8 @@
     "period": "{from} hanga {to}",
     "byMechanic": "Hojii harkaa makaanikaan",
     "noMechanic": "Makaanikii hin ramadamne",
-    "mechanicJobs": "Hojii {count}"
+    "mechanicJobs": "Hojii {count}",
+    "jobsLink": "Hojii xumuramee fi kaffaltii hojii, ji'a Itoophiyaatiin ykn guyyoota filatteen"
   },
   "statusLink": {
     "title": "Liinkii haala maamilaaf",

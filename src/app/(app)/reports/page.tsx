@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Download } from "lucide-react";
+import { ClipboardList, Download } from "lucide-react";
 import { DataList } from "@/components/galmee/data-list";
 import { ListRow, ListSheet } from "@/components/galmee/list-row";
 import { MoneySummaryCard } from "@/components/galmee/money-summary-card";
@@ -50,6 +50,10 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
           {t("export")}
         </a>
       </nav>
+      <Link href="/reports/jobs" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-auto min-h-12 justify-start bg-card py-3 text-left whitespace-normal md:max-w-md")}>
+        <ClipboardList aria-hidden />
+        {t("jobsLink")}
+      </Link>
       <p className="text-sm text-muted-foreground">
         {from === to
           ? formatEthiopianDate(from, locale)

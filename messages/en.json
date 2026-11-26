@@ -289,7 +289,8 @@
     "period": "{from} to {to}",
     "byMechanic": "Labour by mechanic",
     "noMechanic": "No mechanic named",
-    "mechanicJobs": "{count, plural, one {# job} other {# jobs}}"
+    "mechanicJobs": "{count, plural, one {# job} other {# jobs}}",
+    "jobsLink": "Jobs closed and job payments, by Ethiopian month or any days"
   },
   "statusLink": {
     "title": "Status link for the customer",

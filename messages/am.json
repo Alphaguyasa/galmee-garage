@@ -289,7 +289,8 @@
     "period": "ከ{from} እስከ {to}",
     "byMechanic": "የእጅ ዋጋ በመካኒክ",
     "noMechanic": "መካኒክ ያልተመደበለት",
-    "mechanicJobs": "{count} ሥራ"
+    "mechanicJobs": "{count} ሥራ",
+    "jobsLink": "የተዘጉ ሥራዎችና የሥራ ክፍያዎች፣ በኢትዮጵያ ወር ወይም በመረጡት ቀኖች"
   },
   "statusLink": {
     "title": "ለደንበኛው የሁኔታ ሊንክ",
